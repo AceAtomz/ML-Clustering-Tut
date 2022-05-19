@@ -30,6 +30,7 @@ class kMeans():
         temp1 = np.empty((0, 2))
         temp2 = np.empty((0, 2))
         temp3 = np.empty((0, 2))
+        temp4 = np.empty((0, 2))
 
         for i in range(80):
             for j in range(self.k):
@@ -45,20 +46,24 @@ class kMeans():
                 temp2 = np.append(temp2, np.array([self.clusters[i]]), axis=0)
             elif(self.pos[i]==3):
                 temp3 = np.append(temp3, np.array([self.clusters[i]]), axis=0)
+            elif(self.pos[i]==4):
+                temp4 = np.append(temp4, np.array([self.clusters[i]]), axis=0)
 
         self.cluster0 = temp0
         self.cluster1 = temp1
         self.cluster2 = temp2
         self.cluster3 = temp3
-        self.clusters = np.concatenate((self.cluster0,self.cluster1,self.cluster2,self.cluster3), axis=0)
+        self.cluster4 = temp4
+        self.clusters = np.concatenate((self.cluster0,self.cluster1,self.cluster2,self.cluster3,self.cluster4), axis=0)
 
-        return self.cluster0, self.cluster1, self.cluster2, self.cluster3
+        return self.cluster0, self.cluster1, self.cluster2, self.cluster3, self.cluster4
 
     def getNewCentre(self):
         self.centres[0] = np.average(self.cluster0, axis=0)
         self.centres[1] = np.average(self.cluster1, axis=0)
         self.centres[2] = np.average(self.cluster2, axis=0)
         self.centres[3] = np.average(self.cluster3, axis=0)
+        self.centres[4] = np.average(self.cluster4, axis=0)
 
         return self.centres
 
@@ -69,13 +74,16 @@ class kMeans():
             self.obj += np.sum(np.square(self.cluster0[i]-self.centres[0]))
         
         for i in range(self.cluster1.shape[1]):
-            self.obj += np.sum(np.square(self.cluster1[i]-self.centres[0]))
+            self.obj += np.sum(np.square(self.cluster1[i]-self.centres[1]))
         
         for i in range(self.cluster2.shape[1]):
-            self.obj += np.sum(np.square(self.cluster2[i]-self.centres[0]))
+            self.obj += np.sum(np.square(self.cluster2[i]-self.centres[2]))
         
         for i in range(self.cluster3.shape[1]):
-            self.obj += np.sum(np.square(self.cluster3[i]-self.centres[0]))
+            self.obj += np.sum(np.square(self.cluster3[i]-self.centres[3]))
+
+        for i in range(self.cluster4.shape[1]):
+            self.obj += np.sum(np.square(self.cluster4[i]-self.centres[4]))
 
         self.obj = self.obj/80
 
