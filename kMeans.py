@@ -69,13 +69,13 @@ class kMeans():
             self.obj += np.sum(np.square(self.cluster0[i]-self.centres[0]))
         
         for i in range(self.cluster1.shape[1]):
-            self.obj += np.sum(np.square(self.cluster1[i]-self.centres[0]))
+            self.obj += np.sum(np.square(self.cluster1[i]-self.centres[1]))
         
         for i in range(self.cluster2.shape[1]):
-            self.obj += np.sum(np.square(self.cluster2[i]-self.centres[0]))
+            self.obj += np.sum(np.square(self.cluster2[i]-self.centres[2]))
         
         for i in range(self.cluster3.shape[1]):
-            self.obj += np.sum(np.square(self.cluster3[i]-self.centres[0]))
+            self.obj += np.sum(np.square(self.cluster3[i]-self.centres[3]))
 
         self.obj = self.obj/80
 

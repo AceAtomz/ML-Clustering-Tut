@@ -39,7 +39,7 @@ ax1.scatter(centres[2][0], centres[2][1], color='hotpink', marker="s", s=150)
 ax1.scatter(x41, x42,  color = 'lime') #lime
 ax1.scatter(centres[3][0], centres[3][1], color='lime', marker="s", s=150)
 
-ax1.set_title('Fifth Iteration with k=2 Clusters  (OBJ = ' + str(obj) + ')')
+ax1.set_title('Fifth Iteration with k=4 Clusters  (OBJ = ' + str(obj) + ')')
 ax1.set_xlabel("x1", fontsize=15)
 ax1.set_ylabel("x2", fontsize=15)
 fig.tight_layout()
