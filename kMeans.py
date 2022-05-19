@@ -33,6 +33,7 @@ class kMeans():
         temp4 = np.empty((0, 2))
         temp5 = np.empty((0, 2))
         temp6 = np.empty((0, 2))
+        temp7 = np.empty((0, 2))
 
         for i in range(80):
             for j in range(self.k):
@@ -54,6 +55,8 @@ class kMeans():
                 temp5 = np.append(temp5, np.array([self.clusters[i]]), axis=0)
             elif(self.pos[i]==6):
                 temp6 = np.append(temp6, np.array([self.clusters[i]]), axis=0)
+            elif(self.pos[i]==7):
+                temp7 = np.append(temp7, np.array([self.clusters[i]]), axis=0)
 
         self.cluster0 = temp0
         self.cluster1 = temp1
@@ -62,9 +65,10 @@ class kMeans():
         self.cluster4 = temp4
         self.cluster5 = temp5
         self.cluster6 = temp6
-        self.clusters = np.concatenate((self.cluster0,self.cluster1,self.cluster2,self.cluster3,self.cluster4,self.cluster5, self.cluster6), axis=0)
+        self.cluster7 = temp7
+        self.clusters = np.concatenate((self.cluster0,self.cluster1,self.cluster2,self.cluster3,self.cluster4,self.cluster5,self.cluster6,self.cluster7), axis=0)
 
-        return self.cluster0, self.cluster1, self.cluster2, self.cluster3, self.cluster4, self.cluster5, self.cluster6
+        return self.cluster0, self.cluster1, self.cluster2, self.cluster3, self.cluster4, self.cluster5, self.cluster6, self.cluster7
 
     def getNewCentre(self):
         self.centres[0] = np.average(self.cluster0, axis=0)
@@ -74,6 +78,7 @@ class kMeans():
         self.centres[4] = np.average(self.cluster4, axis=0)
         self.centres[5] = np.average(self.cluster5, axis=0)
         self.centres[6] = np.average(self.cluster6, axis=0)
+        self.centres[7] = np.average(self.cluster7, axis=0)
 
         return self.centres
 
@@ -100,6 +105,9 @@ class kMeans():
 
         for i in range(self.cluster6.shape[1]):
             self.obj += np.sum(np.square(self.cluster6[i]-self.centres[6]))
+
+        for i in range(self.cluster7.shape[1]):
+            self.obj += np.sum(np.square(self.cluster7[i]-self.centres[7]))
 
         self.obj = self.obj/80
 

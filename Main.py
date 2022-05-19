@@ -13,10 +13,10 @@ clusters = Q1.getClusters()
 
 np.random.seed(4109) #new seed for new initialization of centres
 
-kM = kMeans(clusters, 7)
+kM = kMeans(clusters, 8)
 obj=0.0
 for i in range(10):
-    cluster1, cluster2, cluster3, cluster4, cluster5, cluster6, cluster7 = kM.getNewClusters()
+    cluster1, cluster2, cluster3, cluster4, cluster5, cluster6, cluster7, cluster8 = kM.getNewClusters()
     centres = kM.getNewCentre()
     newobj = kM.getObjectiveFunction()
     if(newobj==obj):
@@ -39,6 +39,8 @@ x61 = cluster6[:, 0]
 x62 = cluster6[:, 1]
 x71 = cluster7[:, 0]
 x72 = cluster7[:, 1]
+x81 = cluster8[:, 0]
+x82 = cluster8[:, 1]
 
 fig, ax1 = plt.subplots(figsize=(7,5))
 ax1.scatter(x11, x12,  color = 'blue')
@@ -55,8 +57,10 @@ ax1.scatter(x61, x62,  color = 'orange')
 ax1.scatter(centres[5][0], centres[5][1], color='orange', marker="s", s=150)
 ax1.scatter(x71, x72,  color = 'green')
 ax1.scatter(centres[6][0], centres[6][1], color='green', marker="s", s=150)
+ax1.scatter(x81, x82,  color = 'cyan')
+ax1.scatter(centres[7][0], centres[7][1], color='cyan', marker="s", s=150)
 
-ax1.set_title('Eighth Iteration with k=7 Clusters  (OBJ = ' + str(obj) + ')')
+ax1.set_title('Fifth Iteration with k=8 Clusters  (OBJ = ' + str(obj) + ')')
 ax1.set_xlabel("x1", fontsize=15)
 ax1.set_ylabel("x2", fontsize=15)
 fig.tight_layout()
