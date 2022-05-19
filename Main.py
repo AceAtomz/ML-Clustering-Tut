@@ -11,12 +11,12 @@ np.random.seed(4567) #set seed to generate same data for training
 Q1 = Question1()
 clusters = Q1.getClusters()
 
-#np.random.seed(4109) #new seed for new initialization of centres
+np.random.seed(9871) #new seed for new initialization of centres
 
 kM = kMeans(clusters, 4)
 obj=np.array([0.0])
 count=np.array([], np.int8)
-for i in range(10):
+for i in range(25):
     count = np.append(count, np.array([i+1]))
     cluster1, cluster2, cluster3, cluster4 = kM.getNewClusters()
     centres = kM.getNewCentre()
