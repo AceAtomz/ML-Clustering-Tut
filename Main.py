@@ -11,8 +11,10 @@ np.random.seed(4567) #set seed to generate same data for training
 Q1 = Question1()
 clusters = Q1.getClusters()
 
+np.random.seed(4109) #new seed for new initialization of centres
+
 kM = kMeans(clusters, 4)
-for i in range(4):
+for i in range(5):
     cluster1, cluster2, cluster3, cluster4 = kM.getNewClusters()
     centres = kM.getNewCentre()
     obj = kM.getObjectiveFunction()
@@ -37,7 +39,7 @@ ax1.scatter(centres[2][0], centres[2][1], color='hotpink', marker="s", s=150)
 ax1.scatter(x41, x42,  color = 'lime') #lime
 ax1.scatter(centres[3][0], centres[3][1], color='lime', marker="s", s=150)
 
-ax1.set_title('Fourth Color Clustering with new Centres  (OBJ = ' + str(obj) + ')')
+ax1.set_title('Fifth Iteration with k=2 Clusters  (OBJ = ' + str(obj) + ')')
 ax1.set_xlabel("x1", fontsize=15)
 ax1.set_ylabel("x2", fontsize=15)
 fig.tight_layout()
