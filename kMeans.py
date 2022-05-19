@@ -32,7 +32,7 @@ class kMeans():
         temp3 = np.empty((0, 2))
 
         for i in range(80):
-            for j in range(4):
+            for j in range(self.k):
                 if(p1[i]==self.distances[i][j]):
                     self.pos[i] = j
 
