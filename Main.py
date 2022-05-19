@@ -16,7 +16,7 @@ clusters = Q1.getClusters()
 kM = kMeans(clusters, 4)
 obj=np.array([0.0])
 count=np.array([], np.int8)
-for i in range(6):
+for i in range(10):
     count = np.append(count, np.array([i+1]))
     cluster1, cluster2, cluster3, cluster4 = kM.getNewClusters()
     centres = kM.getNewCentre()
