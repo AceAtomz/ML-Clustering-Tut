@@ -14,11 +14,16 @@ clusters = Q1.getClusters()
 np.random.seed(4109) #new seed for new initialization of centres
 
 kM = kMeans(clusters, 2)
-for i in range(5):
+obj=0
+for i in range(10):
     cluster1, cluster2 = kM.getNewClusters()
     centres = kM.getNewCentre()
-    obj = kM.getObjectiveFunction()
-
+    newobj = kM.getObjectiveFunction()
+    if(newobj==obj):
+        print(i)
+        break
+    else:
+        obj = newobj
 
 x11 = cluster1[:, 0]
 x12 = cluster1[:, 1]
@@ -30,7 +35,7 @@ ax1.scatter(x11, x12,  color = 'blue')
 ax1.scatter(centres[0][0], centres[0][1], color='blue', marker="s", s=150)
 ax1.scatter(x21, x22,  color = 'red') #red
 ax1.scatter(centres[1][0], centres[1][1], color='red', marker="s", s=150)
-ax1.set_title('Fifth Iteration with k=2 Clusters  (OBJ = ' + str(obj) + ')')
+ax1.set_title('Ninth Iteration with k=2 Clusters  (OBJ = ' + str(obj) + ')')
 ax1.set_xlabel("x1", fontsize=15)
 ax1.set_ylabel("x2", fontsize=15)
 fig.tight_layout()
