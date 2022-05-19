@@ -9,13 +9,13 @@ from kMeans import *
 np.random.seed(4567) #set seed to generate same data for training
 
 Q1 = Question1()
-cluster1, cluster2, cluster3, cluster4 = Q1.generateClusters()
 clusters = Q1.getClusters()
 
 kM = kMeans(clusters, 4)
-centres = kM.firstCentres()
-distnaces = kM.getDistances()
-cluster1, cluster2, cluster3, cluster4 = kM.getNewClusters()
+for i in range(4):
+    cluster1, cluster2, cluster3, cluster4 = kM.getNewClusters()
+    centres = kM.getNewCentre()
+    obj = kM.getObjectiveFunction()
 
 
 x11 = cluster1[:, 0]
@@ -37,8 +37,7 @@ ax1.scatter(centres[2][0], centres[2][1], color='hotpink', marker="s", s=150)
 ax1.scatter(x41, x42,  color = 'lime') #lime
 ax1.scatter(centres[3][0], centres[3][1], color='lime', marker="s", s=150)
 
-ax1.set_title('First Color Clustering (without new centre)')
-#fig.legend()
+ax1.set_title('Fourth Color Clustering with new Centres  (OBJ = ' + str(obj) + ')')
 ax1.set_xlabel("x1", fontsize=15)
 ax1.set_ylabel("x2", fontsize=15)
 fig.tight_layout()

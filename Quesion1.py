@@ -8,6 +8,7 @@ class Question1():
         self.cluster3 = np.empty((20,2))      #cluster variable
         self.cluster4 = np.empty((20,2))      #cluster variable
         self.clusters = np.empty((80, 2))     #combined clusters
+        self.generateClusters()
 
     def generateClusters(self):
         self.cluster1 = np.random.normal((1,-1), (1,1), (20,2))
