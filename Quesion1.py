@@ -1,8 +1,5 @@
 #Quesion 1
 import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import PolynomialFeatures
-import matplotlib.pyplot as plt
 
 class Question1():
     def __init__(self):
@@ -10,6 +7,7 @@ class Question1():
         self.cluster2 = np.empty((20,2))      #cluster variable
         self.cluster3 = np.empty((20,2))      #cluster variable
         self.cluster4 = np.empty((20,2))      #cluster variable
+        self.clusters = np.empty((80, 2))     #combined clusters
 
     def generateClusters(self):
         self.cluster1 = np.random.normal((1,-1), (1,1), (20,2))
@@ -18,3 +16,7 @@ class Question1():
         self.cluster4 = np.random.normal((1,1), (1,1), (20,2))
 
         return self.cluster1, self.cluster2, self.cluster3, self.cluster4 
+
+    def getClusters(self):
+        self.clusters = np.concatenate((self.cluster1,self.cluster2,self.cluster3,self.cluster4), axis=0)
+        return self.clusters
