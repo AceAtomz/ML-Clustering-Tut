@@ -10,9 +10,10 @@ class kMeans():
         self.firstCentres()
 
     def firstCentres(self):
-        for i in range(self.k):
-            for j in range(3):
-                self.centres[i][j] = np.random.randint(0, 255)
+        self.centres[0] = np.array([71, 92, 41])
+        self.centres[1] = np.array([181, 43, 43])
+        self.centres[2] = np.array([54, 17, 16])
+        self.centres[3] = np.array([192,224,96])
         return self.centres
 
     def getDistances(self):
@@ -35,7 +36,7 @@ class kMeans():
             for j in range(self.k):
                 if(p1[i]==self.distances[i][j]):
                     self.pos[i] = j
-       
+        
         for i in range(self.clusters.shape[0]):
             if(self.pos[i]==0):
                 temp0 = np.append(temp0, np.array([self.clusters[i]]), axis=0)

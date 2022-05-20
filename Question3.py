@@ -14,14 +14,14 @@ obj=0.0
 for i in range(10):
     cluster1, cluster2, cluster3, cluster4 = kM.getNewClusters()
     centres = kM.getNewCentre()
-    """
+    
     newobj = kM.getObjectiveFunction()
     if(newobj==obj):
         print(i)
         break
     else:
         obj = newobj
-    """
+    
 
 cluster1 = np.array(cluster1, dtype=np.int16)
 cluster2 = np.array(cluster2, dtype=np.int16)
@@ -51,6 +51,6 @@ img = np.reshape(img, (originalImg.shape[0], originalImg.shape[1], originalImg.s
 fig, ax1 = plt.subplots(figsize=(7,6))
 ax1.imshow(img)
 ax1.axis('off')
-ax1.set_title('Peppers k=2-means clustering (4th iteration)')
+ax1.set_title('Peppers k=2-means clustering (7th iteration)')
 fig.tight_layout()
 plt.show()
