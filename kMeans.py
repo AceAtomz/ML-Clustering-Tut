@@ -1,40 +1,39 @@
-from multiprocessing.dummy import current_process
 import numpy as np
-import math
 
 class kMeans():
     def __init__(self, clusters, k):
         self.clusters = clusters
         self.k = k
-        self.centres = np.empty((self.k, 2), np.float64)
-        self.distances = np.empty((80, self.k))
+        self.centres = np.empty((self.k, 3), np.float64)
+        self.distances = np.empty((self.clusters.shape[0], self.k))
         self.firstCentres()
 
     def firstCentres(self):
-        self.centres = np.random.normal((0,0), (1.5,1.5), (self.k,2))
+        for i in range(self.k):
+            for j in range(3):
+                self.centres[i][j] = np.random.randint(0, 255)
         return self.centres
 
     def getDistances(self):
-        for i in range(80):
+        for i in range(self.clusters.shape[0]):
             for j in range(self.k):
                 self.distances[i][j] = np.sqrt(np.sum(np.square(self.clusters[i]-self.centres[j])))
-        
         return self.distances
 
     def getNewClusters(self):
         self.getDistances()
 
         p1 = np.amin(self.distances, axis=1)
-        self.pos = np.empty((80), np.int8)
-        temp0 = np.empty((0, 2))
-        temp1 = np.empty((0, 2))
+        self.pos = np.empty((self.clusters.shape[0]), np.int8)
+        temp0 = np.empty((0, 3))
+        temp1 = np.empty((0, 3))
         
-        for i in range(80):
+        for i in range(self.clusters.shape[0]):
             for j in range(self.k):
                 if(p1[i]==self.distances[i][j]):
                     self.pos[i] = j
 
-        for i in range(80):
+        for i in range(self.clusters.shape[0]):
             if(self.pos[i]==0):
                 temp0 = np.append(temp0, np.array([self.clusters[i]]), axis=0)
             elif(self.pos[i]==1):
@@ -58,6 +57,6 @@ class kMeans():
         
         for i in range(self.cluster1.shape[1]):
             self.obj += np.sum(np.square(self.cluster1[i]-self.centres[1]))
-        self.obj = self.obj/80
+        self.obj = self.obj/self.clusters.shape[0]
 
         return self.obj
